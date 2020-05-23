@@ -7,12 +7,6 @@
 #include <psppower.h>
 #include <pspdisplay.h>
 #include <pspgu.h>
-#include <png.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <malloc.h>
 #include "mp3player.h"
 #include "loadobj.h"
 #include "blitobj.h"
@@ -30,17 +24,6 @@ PSP_HEAP_SIZE_KB(12*1024);
 
 //int bullets = 0;
 
-// Colors
-enum colors {
-    RED =	0xFF0000FF,
-    GREEN =	0xFF00FF00,
-    BLUE =	0xFFFF0000,
-    WHITE =	0xFFFFFFFF,
-    LITEGRAY = 0xFFBFBFBF,
-    GRAY =  0xFF7F7F7F,
-    DARKGRAY = 0xFF3F3F3F,
-    BLACK = 0xFF000000
-};
 
 // EXIT CALLBACK
 /* Exit callback */
@@ -95,7 +78,7 @@ int main(){
             oslIntraFontSetStyle(pgfFont, 1.0f,LITEGRAY,(0xFF<<24)+(val<<16)+(val<<8)+(val),0);
             oslDrawString(180, 200, "BattleStar Galactica");
             oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
-            oslDrawString(150, 250, "Press X to quit");
+            oslDrawString(150, 250, "Press X to Start");
 
             oslEndDrawing();
         }
@@ -166,23 +149,4 @@ int main(){
     sceKernelExitGame();
     return 0;
 
-}
-
-void scrollBackground(){
-
-	background.x = background.x-5; 
-    blitObj(background);
-    if(background.x < 0){
-         	blitBg(background); 
-    	if(background.x<-480){
-      		background.x = 0;
-       	} 
-	}
-	if(background.x > 1){
-    	background.x = -480 ;
-	   	blitBg(background); 
-	   	if(background.x > 480){
-	   	background.x = 0;
-	    }	     	
-	}
 }

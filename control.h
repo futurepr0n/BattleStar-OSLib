@@ -4,6 +4,7 @@
 #define _CONTROL_H_
 
 #include "loadobj.h"
+#include "blitobj.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,6 +15,7 @@ extern "C" {
 //private functions
     void control();
     void shootChain();
+    void scrollBackground();
 
 #ifdef __cplusplus
 }

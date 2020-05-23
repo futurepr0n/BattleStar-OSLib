@@ -29,3 +29,22 @@ void shootChain(){
 		bullets = 0;
 	}
 }
+
+void scrollBackground(){
+
+	background.x = background.x-5; 
+    blitObj(background);
+    if(background.x < 0){
+         	blitBg(background); 
+    	if(background.x<-480){
+      		background.x = 0;
+       	} 
+	}
+	if(background.x > 1){
+    	background.x = -480 ;
+	   	blitBg(background); 
+	   	if(background.x > 480){
+	   	background.x = 0;
+	    }	     	
+	}
+}

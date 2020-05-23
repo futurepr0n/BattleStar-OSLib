@@ -13,26 +13,24 @@ int hScore = 200;
 char playerScore[5];
 char highScore[5];
 
-
-
-
-
 void printScore(){
 	/* player score */
+
+
     //oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
     oslDrawString(340, 10, "Score:");
 	sprintf(playerScore,"%d",points);
 	oslDrawString(440,10,playerScore);
 	/* High Score */
     oslDrawString(200, 10, "High Score:");
-	//printTextScreen(200,0,"High Score:",RGB_WHITE);
 	if(hScore > points){
 		/* print HighScore */
 		sprintf(highScore,"%d",hScore);
 		oslDrawString(300,10,highScore);
-		//printTextScreen(300,0,highScore,RGB_RED);
 	}else{
 		/* player score is the high score! */
+		//Draw Fonts:
+		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
 		oslDrawString(300,10,playerScore);
 		//printTextScreen(300,0,playerScore,RGB_YELLOW);
 	}
