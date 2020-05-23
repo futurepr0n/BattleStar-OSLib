@@ -1,10 +1,10 @@
-// blitobj.h: headers for blitobj
+// displayscore.h: headers for displayscore
 //
 // 
 //
 //////////////////////////////////////////////////////////////////////
-#ifndef _BLITOBJ_H_
-#define _BLITOBJ_H_
+#ifndef _DISPLAYSCORE_H_
+#define _DISPLAYSCORE_H_
 
 #include "loadobj.h"
 #include <oslib/oslib.h>
@@ -14,9 +14,8 @@ extern "C" {
 #endif
 
 //private functions
-    void blitObj(obj object);
-    void blitBg(obj object);
-    void blitEnemies();
+    void printScore();
+    int checkCollision(obj blt);
 #ifdef __cplusplus
 }
 #endif

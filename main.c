@@ -17,6 +17,7 @@
 #include "loadobj.h"
 #include "blitobj.h"
 #include "init.h"
+#include "displayscore.h"
 
 #define MAX_NUM_BULLETS 100
 #define MAX_NUM_ENEMIES 100
@@ -26,10 +27,6 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 PSP_HEAP_SIZE_KB(12*1024);
 
 int bullets = 0;
-int points = 0;
-int hScore = 200;
-char playerScore[5];
-char highScore[5];
 
 // Colors
 enum colors {
@@ -43,25 +40,6 @@ enum colors {
     BLACK = 0xFF000000
 };
 
-// typedef struct{
-// 	int x;
-// 	int y;
-// 	int imgX;
-// 	int imgY;
-// 	//int dir;
-// 	OSL_IMAGE *img;
-// 	int isalive;	
-// 	int pctr;
-// }obj;
-
-// obj background;
-// obj player;
-// obj sprite;
-// obj enemy[MAX_NUM_ENEMIES];
-// obj chain[MAX_NUM_BULLETS];
-
-
-
 // EXIT CALLBACK
 /* Exit callback */
 int exit_callback(int arg1, int arg2, void *common) {
@@ -69,40 +47,11 @@ int exit_callback(int arg1, int arg2, void *common) {
     return 0;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Init OSLib:
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// int initOSLib(){
-//     oslInit(0);
-//     oslInitGfx(OSL_PF_8888, 1);
-//     oslInitAudio();
-//     oslSetQuitOnLoadFailure(1);
-//     oslSetKeyAutorepeatInit(40);
-//     oslSetKeyAutorepeatInterval(10);
-//     return 0;
-// }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Init Music:
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// void initMusic(){
-// 	MP3_Init(1);
-// 	MP3_Load("theme_battlestar_galactica.mp3");
-// }
-
 // Init Scrolling Background
-//void initBackground();
 void scrollBackground();
-void blitBg(obj object);
-void blitEnemies();
 void shootChain();
-int checkCollision(obj blt);
 void control();
-void printScore();
-
-
-
-
+// void printScore();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Main:
@@ -116,7 +65,6 @@ int main(){
     //oslIntraFontInit(INTRAFONT_CACHE_MED);
 	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
 
-
     //Loads image:
     OSL_IMAGE *bkg = oslLoadImageFilePNG("bsg_title.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
     //background.img = oslLoadImageFilePNG("space_bg.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
@@ -124,7 +72,7 @@ int main(){
     loadCharacterData();
     
     //Load font:
-//    OSL_FONT *pgfFont = oslLoadFontFile("flash0:/font/ltn8.pgf");
+    // OSL_FONT *pgfFont = oslLoadFontFile("flash0:/font/ltn8.pgf");
     OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
     oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     oslSetFont(pgfFont);
@@ -212,10 +160,7 @@ int main(){
     }
 	MP3_Stop(1);
    	MP3_FreeTune(1);
-    
-    
-    
-    
+        
     //Quit OSL:
     oslEndGfx();
 
@@ -240,7 +185,6 @@ void shootChain(){
 void scrollBackground(){
 
 	background.x = background.x-5; 
-    //oslDrawImageXY(background.img, background.x, background.y); 
     blitObj(background);
     if(background.x < 0){
          	blitBg(background); 
@@ -257,63 +201,6 @@ void scrollBackground(){
 	}
 }
 
-// void initBackground(){
-	
-// 	background.x = 0;
-// 	background.y = 0;
-// 	background.imgX = 480;
-// 	background.imgY = 272;
-//     background.img = oslLoadImageFilePNG("space_bg.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-    
-// 	if(!background.img){
-// 		printf("Background image failed to load...");
-// 	}
-// 	background.isalive = 1;
-// }
-
-
-void blitBg(obj object){
-	object.x = object.x + 480;
-    oslDrawImageXY(object.img, object.x, object.y);
-	//blitAlphaImageToScreen(0, 0, object.imgX, object.imgY, object.img, object.x, object.y);
-}
-
-
-int checkCollision(obj blt){
-	int c_ctr;
-	if(blt.isalive == 1){
-		//blt.x = blt.x + (8 * 1.5F);
-		for(c_ctr = 0; c_ctr < MAX_NUM_ENEMIES; c_ctr++){	
-			if((blt.x >= enemy[c_ctr].x && blt.y < enemy[c_ctr].y + 20) && (blt.x < enemy[c_ctr].x + 42 && blt.y >= enemy[c_ctr].y)){
-				enemy[c_ctr].isalive = 0;
-				points = points + 10;
-				blt.isalive = 0;
-			}
-		}
-	}
-	return(blt.isalive);
-}
-
-
-void blitEnemies(){
-	int enemy_ctr;		
-	for(enemy_ctr = 0; enemy_ctr < MAX_NUM_ENEMIES; enemy_ctr++)
-		{
-			if(enemy[enemy_ctr].isalive == 1){
-				float mtpl = ((int)rand()%7) * 2.1;
-				
-	     		enemy[enemy_ctr].x = enemy[enemy_ctr].x - mtpl;
-				if(enemy[enemy_ctr].x < 0){
-					enemy[enemy_ctr].isalive = 0;
-				}
-	     		blitObj(enemy[enemy_ctr]);
-	     	} else {
-	     		//free up memory.. do not blit to screen
-	     		enemy[enemy_ctr].x = 500;
-	     	}
-		}
-}
-
 void control()
 {
      oslReadKeys();
@@ -325,25 +212,4 @@ void control()
         if((osl_keys->held.left)&&player.x > 60){player.x = player.x - 1;} 
         if((osl_keys->held.up)&&player.y > -10){player.y = player.y - 5;}  
         if((osl_keys->held.down)&&player.y < 262){player.y = player.y + 5;}
-}
-
-void printScore(){
-	/* player score */
-    //oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
-    oslDrawString(340, 10, "Score:");
-	sprintf(playerScore,"%d",points);
-	oslDrawString(440,10,playerScore);
-	/* High Score */
-    oslDrawString(200, 10, "High Score:");
-	//printTextScreen(200,0,"High Score:",RGB_WHITE);
-	if(hScore > points){
-		/* print HighScore */
-		sprintf(highScore,"%d",hScore);
-		oslDrawString(300,10,highScore);
-		//printTextScreen(300,0,highScore,RGB_RED);
-	}else{
-		/* player score is the high score! */
-		oslDrawString(300,10,playerScore);
-		//printTextScreen(300,0,playerScore,RGB_YELLOW);
-	}
 }
