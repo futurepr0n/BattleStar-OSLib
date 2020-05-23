@@ -37,6 +37,7 @@ obj player;
 obj sprite;
 obj enemy[MAX_NUM_ENEMIES];
 obj chain[MAX_NUM_BULLETS];
+obj battlestar;
 
 
 //  Function prototypes for public functions
@@ -48,6 +49,7 @@ obj chain[MAX_NUM_BULLETS];
     void loadChain();
     void loadCharacterData();
 	void loadBackground();
+	void loadEnemyBattlestar();
 
 #ifdef __cplusplus
 }

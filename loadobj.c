@@ -7,6 +7,7 @@
 void loadCharacterData(){
 	loadPlayer();
 	loadEnemies();
+	loadEnemyBattlestar();
 	loadChain();
 	loadBackground();
 }
@@ -57,6 +58,19 @@ void loadEnemies(){
 		
 	}
 	
+}
+
+void loadEnemyBattlestar(){
+	battlestar.x = 10050;
+	battlestar.y = (272/2) + 17;
+	battlestar.imgX = 220;
+	battlestar.imgY = 76;
+	//battlestar.health = 1000;
+	battlestar.img = oslLoadImageFilePNG("battlestar.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+		if(!battlestar.img){
+			printf("battlestar.img failed to load..");
+		}
+	battlestar.isalive = 1;
 }
 
 void loadBackground(){
