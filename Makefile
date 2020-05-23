@@ -11,8 +11,8 @@ ASFLAGS = $(CFLAGS)
 LIBDIR =
 
 MYLIBS=
-STDLIBS= -losl -lpng -lz \
-         -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum -lmad -lpspaudiolib -lpspaudio -lpsphttp -lpspssl -lpspwlan \
+STDLIBS= -lmikmod -losl -lpng -lz \
+         -lpsphprm -lpspsdk -lpspctrl -lpspumd -lpsprtc -lpsppower -lpspgu -lpspgum -lmad -lpspaudiolib -lpspaudio -lpspaudiocodec -lpsphttp -lpspssl -lpspwlan \
          -lpspnet_adhocmatching -lpspnet_adhoc -lpspnet_adhocctl -lm -ljpeg
 LIBS=$(STDLIBS) $(MYLIBS)
 
