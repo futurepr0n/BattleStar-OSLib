@@ -17,7 +17,9 @@
 #include "loadobj.h"
 #include "blitobj.h"
 #include "init.h"
+#include "control.h"
 #include "displayscore.h"
+
 
 #define MAX_NUM_BULLETS 100
 #define MAX_NUM_ENEMIES 100
@@ -26,7 +28,7 @@ PSP_MODULE_INFO("BattleStar OSLib", 0, 1, 0);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 PSP_HEAP_SIZE_KB(12*1024);
 
-int bullets = 0;
+//int bullets = 0;
 
 // Colors
 enum colors {
@@ -49,9 +51,6 @@ int exit_callback(int arg1, int arg2, void *common) {
 
 // Init Scrolling Background
 void scrollBackground();
-void shootChain();
-void control();
-// void printScore();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Main:
@@ -169,19 +168,6 @@ int main(){
 
 }
 
-void shootChain(){
-	if(bullets < MAX_NUM_BULLETS && chain[bullets].isalive == 0){
-		chain[bullets].isalive = 1;
-		chain[bullets].x = player.x + 42;
-		chain[bullets].y = player.y + (player.imgY / 2);
-	} 
-	
-	bullets++;
-	if(bullets > MAX_NUM_BULLETS){
-		bullets = 0;
-	}
-}
-
 void scrollBackground(){
 
 	background.x = background.x-5; 
@@ -199,17 +185,4 @@ void scrollBackground(){
 	   	background.x = 0;
 	    }	     	
 	}
-}
-
-void control()
-{
-     oslReadKeys();
-        if (osl_keys->pressed.circle){
-            shootChain();
-            //    oslQuit();
-        }   
-        if((osl_keys->held.right)&&player.x <= 150){player.x = player.x + 1;}      
-        if((osl_keys->held.left)&&player.x > 60){player.x = player.x - 1;} 
-        if((osl_keys->held.up)&&player.y > -10){player.y = player.y - 5;}  
-        if((osl_keys->held.down)&&player.y < 262){player.y = player.y + 5;}
 }

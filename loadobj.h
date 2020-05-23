@@ -15,7 +15,7 @@ extern "C" {
 #define MAX_NUM_BULLETS 100
 #define MAX_NUM_ENEMIES 100
 
-// int bullets = 0;
+//int bullets = 0;
 // int points = 0;
 // int hScore = 200;
 // char playerScore[5];
