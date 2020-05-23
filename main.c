@@ -124,7 +124,8 @@ int main(){
     loadCharacterData();
     
     //Load font:
-    OSL_FONT *pgfFont = oslLoadFontFile("flash0:/font/ltn8.pgf");
+//    OSL_FONT *pgfFont = oslLoadFontFile("flash0:/font/ltn8.pgf");
+    OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
     oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     oslSetFont(pgfFont);
 
