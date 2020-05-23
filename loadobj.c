@@ -8,6 +8,7 @@ void loadCharacterData(){
 	loadPlayer();
 	loadEnemies();
 	loadChain();
+	loadBackground();
 }
 
 void loadPlayer(){
@@ -56,4 +57,18 @@ void loadEnemies(){
 		
 	}
 	
+}
+
+void loadBackground(){
+	
+	background.x = 0;
+	background.y = 0;
+	background.imgX = 480;
+	background.imgY = 272;
+    background.img = oslLoadImageFilePNG("space_bg.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+    
+	if(!background.img){
+		printf("Background image failed to load...");
+	}
+	background.isalive = 1;
 }

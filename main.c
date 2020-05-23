@@ -16,6 +16,7 @@
 #include "mp3player.h"
 #include "loadobj.h"
 #include "blitobj.h"
+#include "init.h"
 
 #define MAX_NUM_BULLETS 100
 #define MAX_NUM_ENEMIES 100
@@ -71,26 +72,26 @@ int exit_callback(int arg1, int arg2, void *common) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Init OSLib:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int initOSLib(){
-    oslInit(0);
-    oslInitGfx(OSL_PF_8888, 1);
-    oslInitAudio();
-    oslSetQuitOnLoadFailure(1);
-    oslSetKeyAutorepeatInit(40);
-    oslSetKeyAutorepeatInterval(10);
-    return 0;
-}
+// int initOSLib(){
+//     oslInit(0);
+//     oslInitGfx(OSL_PF_8888, 1);
+//     oslInitAudio();
+//     oslSetQuitOnLoadFailure(1);
+//     oslSetKeyAutorepeatInit(40);
+//     oslSetKeyAutorepeatInterval(10);
+//     return 0;
+// }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Init Music:
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void initMusic(){
-	MP3_Init(1);
-	MP3_Load("theme_battlestar_galactica.mp3");
-}
+// void initMusic(){
+// 	MP3_Init(1);
+// 	MP3_Load("theme_battlestar_galactica.mp3");
+// }
 
 // Init Scrolling Background
-void initBackground();
+//void initBackground();
 void scrollBackground();
 void blitBg(obj object);
 void blitEnemies();
@@ -120,7 +121,6 @@ int main(){
     OSL_IMAGE *bkg = oslLoadImageFilePNG("bsg_title.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
     //background.img = oslLoadImageFilePNG("space_bg.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
     
-    initBackground();
     loadCharacterData();
     
     //Load font:
@@ -257,21 +257,19 @@ void scrollBackground(){
 	}
 }
 
-void initBackground(){
+// void initBackground(){
 	
-	background.x = 0;
-	background.y = 0;
-	background.imgX = 480;
-	background.imgY = 272;
-    background.img = oslLoadImageFilePNG("space_bg.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+// 	background.x = 0;
+// 	background.y = 0;
+// 	background.imgX = 480;
+// 	background.imgY = 272;
+//     background.img = oslLoadImageFilePNG("space_bg.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
     
-	if(!background.img){
-		printf("Background image failed to load...");
-	}
-	background.isalive = 1;
-	//blitObj(background);
-	//return background;
-}
+// 	if(!background.img){
+// 		printf("Background image failed to load...");
+// 	}
+// 	background.isalive = 1;
+// }
 
 
 void blitBg(obj object){

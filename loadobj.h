@@ -47,6 +47,7 @@ obj chain[MAX_NUM_BULLETS];
     void loadEnemies();
     void loadChain();
     void loadCharacterData();
+	void loadBackground();
 
 #ifdef __cplusplus
 }
