@@ -85,7 +85,7 @@ int exit_callback(int arg1, int arg2, void *common) {
 }
 
 // Init Scrolling Background
-void scrollBackground();
+//void scrollBackground();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Main:
@@ -148,7 +148,7 @@ int main(){
 	MP3_Stop(1);
    	MP3_FreeTune(1);
     
-    int p = 0;
+    // int p = 0;
     
 ///////////////////////////////////////
 // Set up Mikmod stuff
@@ -203,31 +203,32 @@ int main(){
     while(!osl_quit){
         if (!skip){
             oslStartDrawing();
-            scrollBackground();
-			scrollStarfield();
+			moveStuff();
+            // scrollBackground();
+			// scrollStarfield();
             blitEnemies();		
             
             
             control();
 
-            if(battlestar.x > (480-230)){
-			    battlestar.x = battlestar.x - 5;
-		    }
+            // if(battlestar.x > (480-230)){
+			//     battlestar.x = battlestar.x - 5;
+		    // }
 
-            for(p = 0; p < MAX_NUM_BULLETS; p++){
-			    chain[p].isalive = checkCollision(chain[p]);
-			    if(chain[p].isalive == 1){
-       			    chain[p].x = chain[p].x + 10  * 1.5F;      			
-				    blitObj(chain[p]);					
-			    }else{
-				    chain[p].isalive = 0;
-				    chain[p].pctr = 0;
-			    }			
-			    if(chain[p].x > 485){
-					chain[p].isalive = 0;
-					chain[p].pctr = 0;
-			    }
-		    }       
+            // for(p = 0; p < MAX_NUM_BULLETS; p++){
+			//     chain[p].isalive = checkCollision(chain[p]);
+			//     if(chain[p].isalive == 1){
+       		// 	    chain[p].x = chain[p].x + 10  * 1.5F;      			
+			// 	    blitObj(chain[p]);					
+			//     }else{
+			// 	    chain[p].isalive = 0;
+			// 	    chain[p].pctr = 0;
+			//     }			
+			//     if(chain[p].x > 485){
+			// 		chain[p].isalive = 0;
+			// 		chain[p].pctr = 0;
+			//     }
+		    // }       
 
             if(MP3_EndOfStream() == 1)
 			    MP3_Stop();

@@ -2,6 +2,31 @@
 #include "control.h"
 
 int bullets = 0;
+int p = 0;
+
+void moveStuff(){
+    scrollBackground();
+	scrollStarfield();
+    if(battlestar.x > (480-230)){
+			    battlestar.x = battlestar.x - 5;
+		    }
+
+            for(p = 0; p < MAX_NUM_BULLETS; p++){
+			    chain[p].isalive = checkCollision(chain[p]);
+			    if(chain[p].isalive == 1){
+       			    chain[p].x = chain[p].x + 10  * 1.5F;      			
+				    blitObj(chain[p]);					
+			    }else{
+				    chain[p].isalive = 0;
+				    chain[p].pctr = 0;
+			    }			
+			    if(chain[p].x > 485){
+					chain[p].isalive = 0;
+					chain[p].pctr = 0;
+			    }
+		    }     
+    
+}
 
 void shootChain(){
 	if(bullets < MAX_NUM_BULLETS && chain[bullets].isalive == 0){

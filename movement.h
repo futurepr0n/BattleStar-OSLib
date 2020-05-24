@@ -4,6 +4,7 @@
 
 #include "loadobj.h"
 #include "blitobj.h"
+#include "displayscore.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,6 +15,7 @@ extern "C" {
 void shootChain();
 void scrollBackground();
 void scrollStarfield();
+void moveStuff();
 
 #ifdef __cplusplus
 }
