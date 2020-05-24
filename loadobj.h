@@ -33,6 +33,7 @@ typedef struct{
 }obj;
 
 obj background;
+obj starfield;
 obj player;
 obj sprite;
 obj enemy[MAX_NUM_ENEMIES];
@@ -50,6 +51,7 @@ obj battlestar;
     void loadCharacterData();
 	void loadBackground();
 	void loadEnemyBattlestar();
+	void loadStarfield();
 
 #ifdef __cplusplus
 }

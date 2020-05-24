@@ -3,8 +3,9 @@
 #ifndef _CONTROL_H_
 #define _CONTROL_H_
 
-#include "loadobj.h"
-#include "blitobj.h"
+// #include "loadobj.h"
+// #include "blitobj.h"
+#include "movement.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,8 +15,8 @@ extern "C" {
 
 //private functions
     void control();
-    void shootChain();
-    void scrollBackground();
+    // void shootChain();
+    // void scrollBackground();
 
 #ifdef __cplusplus
 }

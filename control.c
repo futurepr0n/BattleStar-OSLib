@@ -2,7 +2,7 @@
 //#include "loadobj.h"
 #include "control.h"
 
-int bullets = 0;
+//int bullets = 0;
 
 void control()
 {
@@ -17,34 +17,34 @@ void control()
         if((osl_keys->held.down)&&player.y < 262){player.y = player.y + 5;}
 }
 
-void shootChain(){
-	if(bullets < MAX_NUM_BULLETS && chain[bullets].isalive == 0){
-		chain[bullets].isalive = 1;
-		chain[bullets].x = player.x + 42;
-		chain[bullets].y = player.y + (player.imgY / 2);
-	} 
+// void shootChain(){
+// 	if(bullets < MAX_NUM_BULLETS && chain[bullets].isalive == 0){
+// 		chain[bullets].isalive = 1;
+// 		chain[bullets].x = player.x + 42;
+// 		chain[bullets].y = player.y + (player.imgY / 2);
+// 	} 
 	
-	bullets++;
-	if(bullets > MAX_NUM_BULLETS){
-		bullets = 0;
-	}
-}
+// 	bullets++;
+// 	if(bullets > MAX_NUM_BULLETS){
+// 		bullets = 0;
+// 	}
+// }
 
-void scrollBackground(){
+// void scrollBackground(){
 
-	background.x = background.x-5; 
-    blitObj(background);
-    if(background.x < 0){
-         	blitBg(background); 
-    	if(background.x<-480){
-      		background.x = 0;
-       	} 
-	}
-	if(background.x > 1){
-    	background.x = -480 ;
-	   	blitBg(background); 
-	   	if(background.x > 480){
-	   	background.x = 0;
-	    }	     	
-	}
-}
+// 	background.x = background.x-5; 
+//     blitObj(background);
+//     if(background.x < 0){
+//          	blitBg(background); 
+//     	if(background.x<-480){
+//       		background.x = 0;
+//        	} 
+// 	}
+// 	if(background.x > 1){
+//     	background.x = -480 ;
+// 	   	blitBg(background); 
+// 	   	if(background.x > 480){
+// 	   	background.x = 0;
+// 	    }	     	
+// 	}
+// }

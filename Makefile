@@ -1,5 +1,5 @@
 TARGET = battlestaroslib
-OBJS = init.o blitobj.o loadobj.o control.o displayscore.o mp3player.o main.o
+OBJS = init.o blitobj.o loadobj.o movement.o control.o displayscore.o mp3player.o main.o
 
 #To build for custom firmware:
 BUILD_PRX = 1

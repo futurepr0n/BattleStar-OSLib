@@ -10,6 +10,7 @@ void loadCharacterData(){
 	loadEnemyBattlestar();
 	loadChain();
 	loadBackground();
+	loadStarfield();
 }
 
 void loadPlayer(){
@@ -85,4 +86,16 @@ void loadBackground(){
 		printf("Background image failed to load...");
 	}
 	background.isalive = 1;
+}
+
+void loadStarfield(){
+	starfield.x = 0;
+	starfield.y = 0;
+	starfield.imgX = 500;
+	starfield.imgY = 300;
+	starfield.img = oslLoadImageFilePNG("starfield_one.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	if(!starfield.img){
+		printf("Starfield image failed to load...");
+	}
+	starfield.isalive = 1;
 }

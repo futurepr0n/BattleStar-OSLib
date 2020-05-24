@@ -16,6 +16,7 @@
 #include "init.h"
 #include "control.h"
 #include "displayscore.h"
+#include "movement.h"
 #include <mikmod.h>
 #include <unistd.h>
 #include <psputility_sysparam.h>
@@ -203,6 +204,7 @@ int main(){
         if (!skip){
             oslStartDrawing();
             scrollBackground();
+			scrollStarfield();
             blitEnemies();		
             
             
