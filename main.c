@@ -14,11 +14,11 @@
 #include "loadobj.h"
 #include "blitobj.h"
 #include "init.h"
-#include "control.h"
+//#include "control.h"
 #include "displayscore.h"
 #include "movement.h"
-#include <mikmod.h>
 #include <unistd.h>
+#include <mikmod.h>
 #include <psputility_sysparam.h>
 
 
@@ -64,6 +64,7 @@ void my_error_handler(void)
 	return;
 }
 
+BOOL outputEnabled;
 int maxchan = 128;
 MODULE *mf = NULL; // for mod
 SAMPLE *sf = NULL; // for wav
@@ -86,6 +87,7 @@ int exit_callback(int arg1, int arg2, void *common) {
 
 // Init Scrolling Background
 //void scrollBackground();
+void control();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Main:
@@ -111,7 +113,7 @@ int main(){
     oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     oslSetFont(pgfFont);
 
-	//Starts to play MP3
+	//Starts to play MP3    
 	MP3_Play();
 
 /////////////////////////////////
@@ -178,7 +180,12 @@ int main(){
   
   	MikMod_SetNumVoices(-1, 8);
 	/* get ready to play */
+    //int v1;
 	sf = Sample_Load("ViperFiring.wav");
+    //MikMod_SetNumVoices(-1, 2);
+    outputEnabled = 1;
+
+
 	mf = Player_Load("mrdeath_-_12th_moon_rising.xm", maxchan, 0);
     	if (NULL != mf){
     		mf->wrap = 1;
@@ -209,7 +216,17 @@ int main(){
             blitEnemies();		
             
             
+
+            //  /* play first sample */
+            // v1 = Sample_Play(sf, 0, 0);
+            // for(int i = 0; i < 5; i++) {
+            //     MikMod_Update();
+            //     sleep(100000);
+            // }
             control();
+
+
+
 
             // if(battlestar.x > (480-230)){
 			//     battlestar.x = battlestar.x - 5;
@@ -273,4 +290,20 @@ int main(){
     sceKernelExitGame();
     return 0;
 
+}
+
+
+void control()
+{
+     oslReadKeys();
+        if (osl_keys->held.circle){
+            shootChain();
+            voice = Sample_Play(sf,0,0);
+			Voice_SetPanning(voice, pan);
+            //    oslQuit();
+        }   
+        if((osl_keys->held.right)&&player.x <= 150){player.x = player.x + 1;}      
+        if((osl_keys->held.left)&&player.x > 60){player.x = player.x - 1;} 
+        if((osl_keys->held.up)&&player.y > -10){player.y = player.y - 5;}  
+        if((osl_keys->held.down)&&player.y < 262){player.y = player.y + 5;}
 }

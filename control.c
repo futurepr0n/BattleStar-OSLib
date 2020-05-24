@@ -4,6 +4,12 @@
 
 //int bullets = 0;
 
+
+
+
+
+
+
 void control()
 {
      oslReadKeys();
