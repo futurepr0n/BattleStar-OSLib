@@ -253,6 +253,8 @@ int main(){
 
             blitObj(player);
             blitObj(battlestar);
+            blitObj(hs_bar);
+            blitObj(status_bar);
             printScore();
        
             oslEndDrawing();      

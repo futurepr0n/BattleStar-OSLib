@@ -11,6 +11,9 @@ void loadCharacterData(){
 	loadChain();
 	loadBackground();
 	loadStarfield();
+	loadHsBar();
+	loadStatusBar();
+	
 }
 
 void loadPlayer(){
@@ -98,4 +101,29 @@ void loadStarfield(){
 		printf("Starfield image failed to load...");
 	}
 	starfield.isalive = 1;
+}
+
+void loadStatusBar(){
+	status_bar.x = -60;
+	status_bar.y = 224;
+	status_bar.imgX = 160;
+	status_bar.imgY = 90;
+	status_bar.img = oslLoadImageFilePNG("status_bar_new.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	if(!status_bar.img){
+		printf("status_bar image load faild");
+	}
+	status_bar.isalive = 1;
+}
+
+void loadHsBar(){
+	hs_bar.x = 0;
+	hs_bar.y = 0;
+	hs_bar.imgX = 480;
+	hs_bar.imgY = 10;
+	//hs_bar.img2 = oslLoadImageFilePNG("hs_bar_clear.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	hs_bar.img = oslLoadImageFilePNG("hs_bar_clear.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	if(!hs_bar.img){
+		printf("hs_bar image failed to load...");
+	}
+	hs_bar.isalive = 1;
 }
