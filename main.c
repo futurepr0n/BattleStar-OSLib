@@ -114,23 +114,23 @@ int main(){
     while(!osl_quit){
         if (!skip){
             oslStartDrawing();
- 	    moveStuff();
+ 	        moveStuff();
 
             blitEnemies();		
 
             control();
 
             if(MP3_EndOfStream() == 1)
-		MP3_Stop();
+		        MP3_Stop();
 
 
             blitObj(player);
             blitObj(battlestar);
             blitObj(hs_bar);
             blitObj(status_bar);
-            oslDrawString(10,230,playerName);
+            oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
+            oslDrawString(2,230,playerName);
             printScore();
-       
             oslEndDrawing();      
        
         }
@@ -138,24 +138,19 @@ int main(){
         oslEndFrame();
         skip = oslSyncFrame();
 
-	if(MP3_EndOfStream() == 1)
-		MP3_Stop();
+	    // if(MP3_EndOfStream() == 1)
+		//     MP3_Stop();
 
        
     }
-	MP3_Stop(1);
-   	MP3_FreeTune(1);
+	//MP3_Stop(1);
+   	//MP3_FreeTune(1);
         
     //Quit OSL:
     oslEndGfx();
 
     // Quit MikMod
-
-   	
     quitMikMod();
-    Player_Stop();
-    //Player_Free(mf);
-    MikMod_Exit();
 
     // Kernel Exit
     sceKernelExitGame();

@@ -106,6 +106,8 @@ void quitMikMod(){
     	sceKernelDeleteThread(mikModThreadID);
 
 		Player_Free(mf);
+		Player_Stop();
+    	MikMod_Exit();
   	}
 }
 

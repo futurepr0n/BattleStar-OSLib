@@ -19,20 +19,20 @@ void printScore(){
 
 
     //oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
-    oslDrawString(340, 10, "Score:");
+    oslDrawString(340, 0, "Score:");
 	sprintf(playerScore,"%d",points);
-	oslDrawString(440,10,playerScore);
+	oslDrawString(440,0,playerScore);
 	/* High Score */
-    oslDrawString(200, 10, "High Score:");
+    oslDrawString(200, 0, "High Score:");
 	if(hScore > points){
 		/* print HighScore */
 		sprintf(highScore,"%d",hScore);
-		oslDrawString(300,10,highScore);
+		oslDrawString(300,0,highScore);
 	}else{
 		/* player score is the high score! */
 		//Draw Fonts:
 		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
-		oslDrawString(300,10,playerScore);
+		oslDrawString(300,0,playerScore);
 		//printTextScreen(300,0,playerScore,RGB_YELLOW);
 	}
 }
