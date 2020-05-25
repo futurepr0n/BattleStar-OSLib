@@ -21,13 +21,6 @@ char playerScore[5];
 char highScore[5];
 
 
-//oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
-
-//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-//oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
-//oslSetFont(pgfFont);
-
-
 void printScore(){
 	/* player score */
 
