@@ -26,6 +26,7 @@ enum colors {
     BLACK = 0xFF000000
 };
 
+
 //private functions
     void printScore();
     int checkCollision(obj blt);

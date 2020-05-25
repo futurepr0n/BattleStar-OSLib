@@ -17,16 +17,8 @@
 extern "C" {
 #endif
 
-
-
-
 //private functions
     void control();
-    // void shootChain();
-    // void scrollBackground();
-    // void my_error_handler(void);
-    // void setupMikMod();
-    // void quitMikMod();
 
 #ifdef __cplusplus
 }

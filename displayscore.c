@@ -8,6 +8,7 @@
 #include "loadobj.h"
 #include "displayscore.h"
 
+
 int points = 0;
 int hScore = 200;
 char playerScore[5];
