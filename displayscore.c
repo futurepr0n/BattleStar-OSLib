@@ -2,7 +2,9 @@
 #include <psppower.h>
 #include <pspdisplay.h>
 #include <pspkernel.h>
-
+#include <pspgu.h>
+#include <pspgum.h>
+#include <pspdisplay.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
