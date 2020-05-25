@@ -37,7 +37,7 @@ extern BOOL _mm_critical;
 extern char *_mm_errmsg[];
 int mikModThreadID = -1;
 int done = 0;
-
+char playerName[128];
 
 extern UWORD md_mode;
 extern UBYTE md_reverb;
@@ -94,6 +94,10 @@ void control();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main(){
     int skip = 0;
+
+    //Get player name
+   	sceUtilityGetSystemParamString(PSP_SYSTEMPARAM_ID_STRING_NICKNAME, playerName, 127);
+
 
     initOSLib();
 	pspAudioInit();
@@ -255,6 +259,7 @@ int main(){
             blitObj(battlestar);
             blitObj(hs_bar);
             blitObj(status_bar);
+            oslDrawString(10,230,playerName);
             printScore();
        
             oslEndDrawing();      
