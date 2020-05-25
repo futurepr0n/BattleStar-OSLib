@@ -1,4 +1,8 @@
 // displayscore.c for displayscore
+#include <psppower.h>
+#include <pspdisplay.h>
+#include <pspkernel.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,6 +17,14 @@ int points = 0;
 int hScore = 200;
 char playerScore[5];
 char highScore[5];
+
+
+//oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
+
+//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+//oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+//oslSetFont(pgfFont);
+
 
 void printScore(){
 	/* player score */
@@ -50,4 +62,37 @@ int checkCollision(obj blt){
 		}
 	}
 	return(blt.isalive);
+}
+
+void fontInit(){
+	//initOSLib();
+	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
+
+	// OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+    // oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+    // oslSetFont(pgfFont);
+}
+
+
+void drawSplashText(){
+			//fontInit();
+			OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+    		oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+    		oslSetFont(pgfFont);
+			float t = ((float)(clock() % CLOCKS_PER_SEC)) / ((float)CLOCKS_PER_SEC);
+            int val = (t < 0.5f) ? t*511 : (1.0f-t)*511;
+            oslIntraFontSetStyle(pgfFont, 1.0f,LITEGRAY,(0xFF<<24)+(val<<16)+(val<<8)+(val),0);
+            oslDrawString(180, 200, "BattleStar Galactica");
+            oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
+            oslDrawString(150, 250, "Press X to Start");
+}
+
+void gameScreenFontSetup(){
+	//fontInit();
+	OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+    //oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+    oslSetFont(pgfFont);
+	//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+	oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
+
 }

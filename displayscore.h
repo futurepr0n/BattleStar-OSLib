@@ -27,9 +27,14 @@ enum colors {
 };
 
 
+
 //private functions
     void printScore();
     int checkCollision(obj blt);
+    void fontInit();
+    void splashScreenFontSetup();
+    void gameScreenFontSetup();
+    void drawSplashText();
 #ifdef __cplusplus
 }
 #endif

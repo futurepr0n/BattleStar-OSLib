@@ -52,6 +52,8 @@ int main(){
     initOSLib();
     pspAudioInit();
     initMusic();
+
+    //fontInit();
  
     oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
 
@@ -63,9 +65,9 @@ int main(){
     
     //Load font:
     // OSL_FONT *pgfFont = oslLoadFontFile("flash0:/font/ltn8.pgf");
-    OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-    oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
-    oslSetFont(pgfFont);
+    //OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+    //oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+    //oslSetFont(pgfFont);
 
     //Starts to play MP3    
     MP3_Play();
@@ -73,6 +75,7 @@ int main(){
 /////////////////////////////////
 // Splash Screen
 /////////////////////////////////
+    //drawSplashText();
 
     while(!osl_quit){
         if (!skip){
@@ -80,13 +83,14 @@ int main(){
 
             oslDrawImageXY(bkg, 0, 0);
 
-	    //Draw Fonts:
-	    float t = ((float)(clock() % CLOCKS_PER_SEC)) / ((float)CLOCKS_PER_SEC);
-            int val = (t < 0.5f) ? t*511 : (1.0f-t)*511;
-            oslIntraFontSetStyle(pgfFont, 1.0f,LITEGRAY,(0xFF<<24)+(val<<16)+(val<<8)+(val),0);
-            oslDrawString(180, 200, "BattleStar Galactica");
-            oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
-            oslDrawString(150, 250, "Press X to Start");
+	    // //Draw Fonts:
+	    //     float t = ((float)(clock() % CLOCKS_PER_SEC)) / ((float)CLOCKS_PER_SEC);
+        //     int val = (t < 0.5f) ? t*511 : (1.0f-t)*511;
+        //     oslIntraFontSetStyle(pgfFont, 1.0f,LITEGRAY,(0xFF<<24)+(val<<16)+(val<<8)+(val),0);
+        //     oslDrawString(180, 200, "BattleStar Galactica");
+        //     oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
+        //     oslDrawString(150, 250, "Press X to Start");
+            drawSplashText();
 
             oslEndDrawing();
         }
@@ -111,6 +115,8 @@ int main(){
 // Main Game Loop
 ///////////////////////////////////////
     
+    gameScreenFontSetup();
+
     while(!osl_quit){
         if (!skip){
             oslStartDrawing();
@@ -128,7 +134,7 @@ int main(){
             blitObj(battlestar);
             blitObj(hs_bar);
             blitObj(status_bar);
-            oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
+            //oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
             oslDrawString(2,230,playerName);
             printScore();
             oslEndDrawing();      
