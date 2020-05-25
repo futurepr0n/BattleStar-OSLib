@@ -5,6 +5,7 @@
 #include "loadobj.h"
 #include "blitobj.h"
 #include "displayscore.h"
+#include "audio.h"
 
 #ifdef __cplusplus
 extern "C" {
