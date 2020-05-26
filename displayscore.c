@@ -21,6 +21,8 @@ char playerScore[5];
 char highScore[5];
 //OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 
+
+
 void printScore(){
 	/* player score */
 
@@ -38,9 +40,9 @@ void printScore(){
 	}else{
 		/* player score is the high score! */
 		//Draw Fonts:
-		OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-		oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
-		oslSetFont(pgfFont);
+		//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
+		//oslSetFont(pgfFont);
 		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
 		oslDrawString(300,0,playerScore);
 		//printTextScreen(300,0,playerScore,RGB_YELLOW);
@@ -64,17 +66,17 @@ int checkCollision(obj blt){
 }
 
 void fontInit(){
-	//initOSLib();
-	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
+ 	//initOSLib();
+ 	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
 
-	// OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-    // oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
-    // oslSetFont(pgfFont);
+ 	OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+    oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+    oslSetFont(pgfFont);
 }
 
 
 void drawSplashText(){
-			//fontInit();
+			
 			OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
     		oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     		oslSetFont(pgfFont);

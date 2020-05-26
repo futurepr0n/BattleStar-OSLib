@@ -27,6 +27,8 @@ enum colors {
 };
 
 
+//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+
 
 //private functions
     void printScore();

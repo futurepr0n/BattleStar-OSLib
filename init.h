@@ -12,6 +12,7 @@ extern "C" {
     int initOSLib();
     void initMusic();
 
+
 #ifdef __cplusplus
 }
 #endif
