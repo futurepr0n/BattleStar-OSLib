@@ -19,7 +19,7 @@ int points = 0;
 int hScore = 200;
 char playerScore[5];
 char highScore[5];
-
+//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 
 void printScore(){
 	/* player score */
@@ -38,9 +38,13 @@ void printScore(){
 	}else{
 		/* player score is the high score! */
 		//Draw Fonts:
+		OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+		oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
+		oslSetFont(pgfFont);
 		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
 		oslDrawString(300,0,playerScore);
 		//printTextScreen(300,0,playerScore,RGB_YELLOW);
+		hs_bar.img = hs_bar.img2;
 	}
 }
 
@@ -85,7 +89,7 @@ void drawSplashText(){
 void gameScreenFontSetup(){
 	//fontInit();
 	OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-    //oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
+    oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     oslSetFont(pgfFont);
 	//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 	oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);

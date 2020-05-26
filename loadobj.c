@@ -22,7 +22,7 @@ void loadPlayer(){
 	player.y = 80;
 	player.imgX = 46;
 	player.imgY = 24 ;
-	player.img = oslLoadImageFilePNG("viper.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	player.img = oslLoadImageFilePNG("vipersm.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
       
 	if(!player.img){
 		printf("Player image failed to load...");
@@ -120,8 +120,8 @@ void loadHsBar(){
 	hs_bar.y = 0;
 	hs_bar.imgX = 480;
 	hs_bar.imgY = 10;
-	//hs_bar.img2 = oslLoadImageFilePNG("hs_bar_clear.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-	hs_bar.img = oslLoadImageFilePNG("hs_bar_clear.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	hs_bar.img2 = oslLoadImageFilePNG("hs_bar_clear.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+	hs_bar.img = oslLoadImageFilePNG("hs_bar.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 	if(!hs_bar.img){
 		printf("hs_bar image failed to load...");
 	}

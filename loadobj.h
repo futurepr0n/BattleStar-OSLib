@@ -28,6 +28,7 @@ typedef struct{
 	int imgX;
 	int imgY;
 	OSL_IMAGE *img;
+	OSL_IMAGE *img2;
 	int isalive;	
 	int pctr;
 }obj;
