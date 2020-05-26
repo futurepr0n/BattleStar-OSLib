@@ -124,10 +124,12 @@ int main(){
 
 
             blitObj(player);
-            blitObj(battlestar);
+            if(battlestar.isalive==1){
+                blitObj(battlestar);
+            }
             blitObj(hs_bar);
             blitObj(status_bar);
-            
+
             //oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
             oslDrawString(2,230,playerName);
             printScore();

@@ -23,7 +23,8 @@ void loadPlayer(){
 	player.imgX = 46;
 	player.imgY = 24 ;
 	player.img = oslLoadImageFilePNG("vipersm.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
-      
+    player.health = 1000;
+
 	if(!player.img){
 		printf("Player image failed to load...");
 	}
@@ -53,6 +54,7 @@ void loadEnemies(){
 		enemy[i].y = 1 + ((int)rand()%272 - 34);
 		enemy[i].imgX = 42;
 		enemy[i].imgY = 20;
+		enemy[i].health = 50;
 		enemy[i].img = oslLoadImageFilePNG("raidersm.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 		if(!enemy[i].img){
 			printf("Enemy image failed to load...");
@@ -69,7 +71,7 @@ void loadEnemyBattlestar(){
 	battlestar.y = (272/2) + 17;
 	battlestar.imgX = 220;
 	battlestar.imgY = 76;
-	//battlestar.health = 1000;
+	battlestar.health = 1000;
 	battlestar.img = oslLoadImageFilePNG("battlestar.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 		if(!battlestar.img){
 			printf("battlestar.img failed to load..");

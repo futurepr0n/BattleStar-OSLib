@@ -56,11 +56,23 @@ int checkCollision(obj blt){
 		//blt.x = blt.x + (8 * 1.5F);
 		for(c_ctr = 0; c_ctr < MAX_NUM_ENEMIES; c_ctr++){	
 			if((blt.x >= enemy[c_ctr].x && blt.y < enemy[c_ctr].y + 20) && (blt.x < enemy[c_ctr].x + 42 && blt.y >= enemy[c_ctr].y)){
-				enemy[c_ctr].isalive = 0;
+				enemy[c_ctr].health = enemy[c_ctr].health - 10;
+				if(enemy[c_ctr].health < 0){
+					enemy[c_ctr].isalive = 0;
+				}	
 				points = points + 10;
 				blt.isalive = 0;
 			}
 		}
+		if((blt.x >= battlestar.x && blt.y < battlestar.y + 76) && (blt.x < battlestar.x + 220 && blt.y >= battlestar.y)){
+				battlestar.health = battlestar.health - 10;
+				if(battlestar.health < 0){
+					battlestar.isalive = 0;
+					points = points + 1000;
+				}	
+				
+				blt.isalive = 0;
+			}
 	}
 	return(blt.isalive);
 }

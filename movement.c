@@ -8,8 +8,8 @@ void moveStuff(){
     scrollBackground();
 	scrollStarfield();
     if(battlestar.x > (480-230)){
-			    battlestar.x = battlestar.x - 5;
-		    }
+		battlestar.x = battlestar.x - 5;
+	}
 
             for(p = 0; p < MAX_NUM_BULLETS; p++){
 			    chain[p].isalive = checkCollision(chain[p]);

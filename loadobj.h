@@ -27,6 +27,7 @@ typedef struct{
 	int y;
 	int imgX;
 	int imgY;
+	int health;
 	OSL_IMAGE *img;
 	OSL_IMAGE *img2;
 	int isalive;	
