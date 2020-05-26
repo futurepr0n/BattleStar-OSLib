@@ -7,6 +7,7 @@
 #define _DISPLAYSCORE_H_
 
 #include <oslib/oslib.h>
+
 #include "loadobj.h"
 #include "init.h"
 
@@ -26,8 +27,10 @@ enum colors {
     BLACK = 0xFF000000
 };
 
+OSL_FONT *pgfFont;
+OSL_FONT *pgfFont2;
+//&pgfFont = oslLoadFontFile("ltn8.pgf");
 
-//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 
 
 //private functions

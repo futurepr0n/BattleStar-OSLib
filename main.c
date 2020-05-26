@@ -31,7 +31,7 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 PSP_HEAP_SIZE_KB(12*1024);
 
 char playerName[128];
-
+OSL_FONT *pgfFont; 
 // EXIT CALLBACK
 /* Exit callback */
 //int exit_callback(int arg1, int arg2, void *common) {
@@ -53,7 +53,7 @@ int main(){
     pspAudioInit();
     initMusic();
 
-    //fontInit();
+    fontInit();
  
     oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
 

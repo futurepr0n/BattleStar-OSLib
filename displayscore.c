@@ -13,6 +13,7 @@
 #include <oslib/oslib.h>
 #include "loadobj.h"
 #include "displayscore.h"
+//#include <oslib/text.h>
 
 
 int points = 0;
@@ -22,11 +23,10 @@ char highScore[5];
 //OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 
 
-
 void printScore(){
 	/* player score */
 
-
+	gameScreenFontSetup();
     //oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
     oslDrawString(340, 0, "Score:");
 	sprintf(playerScore,"%d",points);
@@ -41,10 +41,11 @@ void printScore(){
 		/* player score is the high score! */
 		//Draw Fonts:
 		//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
-		//oslSetFont(pgfFont);
+		
+		oslSetFont(pgfFont2);
 		//oslIntraFontSetStyle(pgfFont, 1.0f,GRAY,WHITE,0);
 		oslDrawString(300,0,playerScore);
+		oslIntraFontSetStyle(pgfFont2, 0.65f,GRAY,WHITE,0);
 		//printTextScreen(300,0,playerScore,RGB_YELLOW);
 		hs_bar.img = hs_bar.img2;
 	}
@@ -81,7 +82,8 @@ void fontInit(){
  	//initOSLib();
  	oslIntraFontInit(INTRAFONT_CACHE_ALL | INTRAFONT_STRING_UTF8); // All fonts loaded with oslLoadIntraFontFile will have UTF8 support
 
- 	OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+ 	pgfFont = oslLoadFontFile("ltn8.pgf");
+	pgfFont2 = oslLoadFontFile("ltn8.pgf");
     oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     oslSetFont(pgfFont);
 }
@@ -89,7 +91,7 @@ void fontInit(){
 
 void drawSplashText(){
 			
-			OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+			//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
     		oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     		oslSetFont(pgfFont);
 			float t = ((float)(clock() % CLOCKS_PER_SEC)) / ((float)CLOCKS_PER_SEC);
@@ -102,7 +104,7 @@ void drawSplashText(){
 
 void gameScreenFontSetup(){
 	//fontInit();
-	OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
+	//pgfFont = oslLoadFontFile("ltn8.pgf");
     oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
     oslSetFont(pgfFont);
 	//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
