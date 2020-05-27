@@ -18,7 +18,8 @@
 
 int points = 0;
 int hScore = 200;
-char playerScore[5];
+char playerScore[10];
+char playerHealth[200];
 char highScore[5];
 //OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 
@@ -27,6 +28,7 @@ void printScore(){
 	/* player score */
 
 	gameScreenFontSetup();
+	drawStatusInfo();
     //oslIntraFontSetStyle(pgfFont, 1.0f,WHITE,BLACK,0);
     oslDrawString(340, 0, "Score:");
 	sprintf(playerScore,"%d",points);
@@ -109,5 +111,11 @@ void gameScreenFontSetup(){
     oslSetFont(pgfFont);
 	//OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
 	oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
+
+}
+
+void drawStatusInfo(){
+	sprintf(playerHealth,"Life: %d",player.health);
+	oslDrawString(2,260,playerHealth);
 
 }

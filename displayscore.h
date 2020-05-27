@@ -40,6 +40,7 @@ OSL_FONT *pgfFont2;
     void splashScreenFontSetup();
     void gameScreenFontSetup();
     void drawSplashText();
+    void drawStatusInfo();
 #ifdef __cplusplus
 }
 #endif

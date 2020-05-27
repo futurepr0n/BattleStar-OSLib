@@ -31,7 +31,7 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 PSP_HEAP_SIZE_KB(12*1024);
 
 char playerName[128];
-OSL_FONT *pgfFont; 
+
 // EXIT CALLBACK
 /* Exit callback */
 //int exit_callback(int arg1, int arg2, void *common) {
@@ -63,11 +63,7 @@ int main(){
     
     loadCharacterData();
     
-    //Load font:
-    // OSL_FONT *pgfFont = oslLoadFontFile("flash0:/font/ltn8.pgf");
-    //OSL_FONT *pgfFont = oslLoadFontFile("ltn8.pgf");
-    //oslIntraFontSetStyle(pgfFont, 1.0, RGBA(255,255,255,255), RGBA(0,0,0,0), INTRAFONT_ALIGN_LEFT);
-    //oslSetFont(pgfFont);
+  
 
     //Starts to play MP3    
     MP3_Play();
@@ -132,6 +128,7 @@ int main(){
 
             //oslIntraFontSetStyle(pgfFont, 0.65f,WHITE,BLACK,0);
             oslDrawString(2,230,playerName);
+            //drawStatusInfo();
             printScore();
             oslEndDrawing();      
        
