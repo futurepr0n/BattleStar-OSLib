@@ -25,6 +25,21 @@ void moveStuff(){
 					chain[p].pctr = 0;
 			    }
 		    }     
+
+			for(p = 0; p < MAX_NUM_ENEMY_BULLETS; p++){
+			    enemychain[p].isalive = checkCollision(enemychain[p]);
+			    if(enemychain[p].isalive == 1){
+       			    enemychain[p].x = enemychain[p].x - 5 * 1.5F;      			
+				    blitObj(enemychain[p]);					
+			    }else{
+				    enemychain[p].isalive = 0;
+				    enemychain[p].pctr = 0;
+			    }			
+			    if(enemychain[p].x > 0){
+					enemychain[p].isalive = 0;
+					enemychain[p].pctr = 0;
+			    }
+		    }     
     
 }
 
@@ -40,6 +55,20 @@ void shootChain(){
 		bullets = 0;
 	}
 }
+
+// void shootEnemyChain(int z){
+// 	if(bullets < MAX_NUM_ENEMY_BULLETS && enemychain[bullets].isalive == 0){
+// 		enemychain[bullets].isalive = 1;
+// 		enemychain[bullets].x = enemy[z].x + 42;
+// 		enemychain[bullets].y = enemy[z].y + (enemy[z].imgY / 2);
+// 	} 
+	
+// 	bullets++;
+// 	if(bullets > MAX_NUM_ENEMY_BULLETS){
+// 		bullets = 0;
+// 	}
+
+// }
 
 void scrollBackground(){
 

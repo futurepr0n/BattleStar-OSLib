@@ -17,6 +17,7 @@ extern "C" {
     void blitObj(obj object);
     void blitBg(obj object);
     void blitEnemies();
+    void shootEnemyChain(int z);
 #ifdef __cplusplus
 }
 #endif

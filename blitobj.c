@@ -4,6 +4,9 @@
 #include <oslib/oslib.h>
 #include "blitobj.h"
 
+int enemybullets = 0;
+//#define MAX_NUM_ENEMY_BULLETS = 3;
+
 void blitObj(obj object){
     oslDrawImageXY(object.img, object.x, object.y);
 
@@ -27,9 +30,29 @@ void blitEnemies(){
 					enemy[enemy_ctr].isalive = 0;
 				}
 	     		blitObj(enemy[enemy_ctr]);
+				int z = (int)rand()%MAX_NUM_ENEMIES;
+				if(enemy[z].isalive == 1)
+				{
+					shootEnemyChain(z);
+				}
 	     	} else {
 	     		//free up memory.. do not blit to screen
 	     		enemy[enemy_ctr].x = 500;
 	     	}
 		}
+}
+
+
+void shootEnemyChain(int z){
+	if(enemybullets < MAX_NUM_ENEMY_BULLETS && enemychain[enemybullets].isalive == 0){
+		enemychain[enemybullets].isalive = 1;
+		enemychain[enemybullets].x = enemy[z].x + 42;
+		enemychain[enemybullets].y = enemy[z].y + (enemy[z].imgY / 2);
+	} 
+	
+	enemybullets++;
+	if(enemybullets > MAX_NUM_ENEMY_BULLETS){
+		enemybullets = 0;
+	}
+
 }

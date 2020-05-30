@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 #define MAX_NUM_BULLETS 100
+#define MAX_NUM_ENEMY_BULLETS 3
 #define MAX_NUM_ENEMIES 100
 
 //int bullets = 0;
@@ -40,6 +41,7 @@ obj player;
 obj sprite;
 obj enemy[MAX_NUM_ENEMIES];
 obj chain[MAX_NUM_BULLETS];
+obj enemychain[MAX_NUM_ENEMY_BULLETS];
 obj battlestar;
 obj hs_bar;
 obj status_bar;
@@ -52,6 +54,7 @@ obj status_bar;
     void loadPlayer();
     void loadEnemies();
     void loadChain();
+	void loadEnemyChain();
     void loadCharacterData();
 	void loadBackground();
 	void loadEnemyBattlestar();

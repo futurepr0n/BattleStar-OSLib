@@ -9,6 +9,7 @@ void loadCharacterData(){
 	loadEnemies();
 	loadEnemyBattlestar();
 	loadChain();
+	loadEnemyChain();
 	loadBackground();
 	loadStarfield();
 	loadHsBar();
@@ -65,6 +66,23 @@ void loadEnemies(){
 	}
 	
 }
+
+void loadEnemyChain(){
+	int i;	
+	for(i = 0; i < MAX_NUM_ENEMY_BULLETS; i++){
+		enemychain[i].x = 0;
+		enemychain[i].y = 0;
+		enemychain[i].imgX = 8;
+		enemychain[i].imgY = 6;
+		enemychain[i].img  = oslLoadImageFilePNG("chain.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+		if(!enemychain[i].img){
+			printf("enemychain image failed to load...");
+		}
+		enemychain[i].isalive = 0;
+		enemychain[i].pctr = 0;
+	}
+}
+
 
 void loadEnemyBattlestar(){
 	battlestar.x = 10050;

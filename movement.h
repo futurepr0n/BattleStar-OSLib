@@ -17,6 +17,7 @@ void shootChain();
 void scrollBackground();
 void scrollStarfield();
 void moveStuff();
+//void shootEnemyChain(int z);
 
 #ifdef __cplusplus
 }
