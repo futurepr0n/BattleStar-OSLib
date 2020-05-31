@@ -1,0 +1,1 @@
+docker run --rm -v "${PWD}:/${PWD}" -u `id -u`:`id -g` -w "${PWD}" futurepr0n/pspdev make clean

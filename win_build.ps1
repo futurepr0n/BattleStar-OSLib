@@ -1,0 +1,1 @@
+docker run -v ${PWD}:/build futurepr0n/pspdev make
