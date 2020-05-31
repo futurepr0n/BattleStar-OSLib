@@ -74,7 +74,7 @@ void loadEnemyChain(){
 		enemychain[i].y = 0;
 		enemychain[i].imgX = 8;
 		enemychain[i].imgY = 6;
-		enemychain[i].img  = oslLoadImageFilePNG("chain.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
+		enemychain[i].img  = oslLoadImageFilePNG("enemychain.png", OSL_IN_RAM | OSL_SWIZZLED, OSL_PF_8888);
 		if(!enemychain[i].img){
 			printf("enemychain image failed to load...");
 		}
